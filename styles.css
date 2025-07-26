@@ -406,3 +406,18 @@ nav a.active {
   flex-shrink: 0;
   object-fit: cover;
 }
+
+.product-card img {
+  object-fit: contain !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  background: #fff;
+}
+
+.product-card .relative.overflow-hidden {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
