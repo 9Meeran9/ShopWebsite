@@ -52,8 +52,11 @@ whatsappButtons.forEach((button) => {
   button.addEventListener("click", function () {
     const product = this.dataset.product;
     const price = this.dataset.price;
+    const card = button.closest('.product-card');
+    const img = card ? card.querySelector('img') : null;
+    const imgUrl = img ? window.location.origin + '/' + img.getAttribute('src') : '';
 
-    const message = `Hello Abrish Fishing, I'm interested in purchasing:\n\n*Product:* ${product}\n*Price:* ${price}\n\nPlease let me know about availability.`;
+    const message = `Hello Abrish Fishing, I'm interested in purchasing:\n\n*Product:* ${product}\n*Price:* ${price}\n${imgUrl ? `*Image:* ${imgUrl}\n` : ''}\nPlease let me know about availability.`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, "_blank");
   });
