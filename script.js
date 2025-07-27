@@ -187,7 +187,14 @@ buyNowBtn.addEventListener("click", () => {
 
   let message = "Hello Abrish Fishing, I'm interested in purchasing:\n\n";
   cart.forEach((item) => {
-    message += `*Product:* ${item.product}\n*Price:* ${item.price}\n*Quantity:* ${item.quantity}\n\n`;
+    // Find the product card for this item
+    const card = Array.from(document.querySelectorAll('.product-card')).find(
+      c => c.querySelector('.whatsapp-btn')?.dataset.product === item.product
+    );
+    const img = card ? card.querySelector('img') : null;
+    const imgUrl = img ? window.location.origin + '/' + img.getAttribute('src') : '';
+
+    message += `*Product:* ${item.product}\n*Price:* ${item.price}\n*Quantity:* ${item.quantity}\n${imgUrl ? `*Image:* ${imgUrl}\n` : ''}\n`;
   });
   message += "Please let me know about availability.";
 
