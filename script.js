@@ -54,7 +54,7 @@ whatsappButtons.forEach((button) => {
     const price = this.dataset.price;
     const card = button.closest('.product-card');
     const img = card ? card.querySelector('img') : null;
-    const imgUrl = img ? window.location.origin + '/' + img.getAttribute('src') : '';
+    const imgUrl = img ? new URL(img.getAttribute('src'), window.location.href).href : '';
 
     const message = `Hello Abrish Fishing, I'm interested in purchasing:\n\n*Product:* ${product}\n*Price:* ${price}\n${imgUrl ? `*Image:* ${imgUrl}\n` : ''}\nPlease let me know about availability.`;
     const encodedMessage = encodeURIComponent(message);
@@ -192,7 +192,7 @@ buyNowBtn.addEventListener("click", () => {
       c => c.querySelector('.whatsapp-btn')?.dataset.product === item.product
     );
     const img = card ? card.querySelector('img') : null;
-    const imgUrl = img ? window.location.origin + '/' + img.getAttribute('src') : '';
+   const imgUrl = img ? new URL(img.getAttribute('src'), window.location.href).href : '';
 
     message += `*Product:* ${item.product}\n*Price:* ${item.price}\n*Quantity:* ${item.quantity}\n${imgUrl ? `*Image:* ${imgUrl}\n` : ''}\n`;
   });
